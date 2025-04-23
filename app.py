@@ -42,7 +42,10 @@ def main():
             st.session_state.score = score
             st.session_state.grade = get_grade(score)
             st.session_state.page = "results"
-            st.experimental_rerun()
+            try:
+                st.rerun()
+            except AttributeError:
+                st.experimental_rerun()
 
     elif st.session_state.page == "results":
         st.title("📊 Results Page")
